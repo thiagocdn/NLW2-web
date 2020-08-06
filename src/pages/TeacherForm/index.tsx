@@ -9,8 +9,10 @@ import './styles.css'
 import Textarea from '../../components/TextArea';
 import Select from '../../components/Select';
 import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 function TeacherForm() {
+  const history = useHistory();
   const [name, setName] = useState('');
   const [avatar, setAvatar] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
@@ -55,9 +57,11 @@ function TeacherForm() {
       schedule: scheduleItems
     }).then(() => {
       alert('Cadastro realizado com sucesso!');
+
+      history.push('/');
     }).catch(() => {
       alert('Erro no cadastro :(');
-    })
+    });
   }
 
   return (
